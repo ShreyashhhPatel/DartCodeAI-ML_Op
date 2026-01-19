@@ -1,8 +1,0 @@
-name: dartcodeai
-description: ML/Analytics CLI tool for DartCodeAI assignment - embedding comparison and quota enforcement
-version: 1.0.0
-
-environment:
-  sdk: '>=2.19.0 <4.0.0'
-
-# No external dependencies needed - using dart:io for HTTP requests
