@@ -122,14 +122,51 @@ Fill `/report/self_assessment.md` honestly:
 
 ---
 
+## Quick Start with Mise
+
+This project uses [mise](https://mise.jdx.dev/) for task automation.
+
+### Setup
+
+```bash
+# 1. Install mise (if not installed)
+curl https://mise.run | sh
+
+# 2. Trust and install tools
+mise trust && mise install
+
+# 3. Create .env file with your API key
+cp env.example .env
+# Edit .env and add your HuggingFace API key
+```
+
+### Available Commands
+
+| Command | What it does |
+|---------|--------------|
+| `mise run embed:test` | Test embeddings |
+| `mise run quota` | Run quota tests |
+| `mise run delta` | Run Python delta |
+| `mise run benchmark` | Run 10 benchmarks |
+| `mise run setup` | Install deps |
+| `mise run clean` | Clean artifacts |
+
+### Custom Embedding Comparison
+
+```bash
+mise run embed "your first text" "your second text"
+```
+
+---
+
 ## Running the Starter (optional helpers)
 
 Minimal Python wrapper is included under `python/`. You may also call APIs directly from Dart.
 
-Environment variables:
+Environment variables (set in `.env` file):
 ```
-API_KEY=your_api_key
-ENDPOINT_URL=https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2
+API_KEY=your_huggingface_api_key
+ENDPOINT_URL=https://router.huggingface.co/hf-inference/models/sentence-transformers/all-MiniLM-L6-v2/pipeline/feature-extraction
 ```
 
 ---

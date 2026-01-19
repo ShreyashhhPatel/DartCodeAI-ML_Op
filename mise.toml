@@ -1,0 +1,54 @@
+# DartCodeAI - Mise Configuration
+# Setup: mise install | Run: mise run <task>
+
+[tools]
+dart = "latest"
+python = "3.12"
+
+[env]
+_.file = "modified_code/.env"
+
+# Task 1: Embedding Comparison
+[tasks.embed]
+description = "Run embedding comparison (Task 1) - usage: mise run embed 'text1' 'text2'"
+run = "cd modified_code/dart && dart run bin/dartcodeai.dart --task embed --text \"$1|$2\""
+
+[tasks."embed:test"]
+description = "Test embedding with sample texts"
+run = "cd modified_code/dart && dart run bin/dartcodeai.dart --task embed --text 'cats are great|dogs are awesome'"
+
+[tasks."embed:similar"]
+description = "Test with very similar texts"
+run = "cd modified_code/dart && dart run bin/dartcodeai.dart --task embed --text 'I love pizza|Pizza is my favorite food'"
+
+[tasks."embed:different"]
+description = "Test with unrelated texts"
+run = "cd modified_code/dart && dart run bin/dartcodeai.dart --task embed --text 'The weather is sunny|I need to fix a bug'"
+
+# Task 2: Quota Enforcement
+[tasks.quota]
+description = "Run quota enforcement tests (Task 2)"
+run = "cd modified_code/dart && dart run bin/dartcodeai.dart --task quota-test --text ''"
+
+# Task 3: Safe Delta (Python)
+[tasks.delta]
+description = "Run safe delta function (Task 3)"
+run = "cd modified_code/python && python -c 'from cli import compute_safe_delta; print(compute_safe_delta(100, 250))'"
+
+# Task 4: Benchmarks
+[tasks.benchmark]
+description = "Run 10 embedding requests for benchmarking (Task 4)"
+run = "cd modified_code/dart && for i in {1..10}; do dart run bin/dartcodeai.dart --task embed --text \"test $i|compare $i\"; done"
+
+# Utility
+[tasks.setup]
+description = "Install dependencies"
+run = "cd modified_code/dart && dart pub get && cd ../python && pip install -r requirements.txt"
+
+[tasks.clean]
+description = "Clean build artifacts"
+run = "rm -rf modified_code/dart/.dart_tool modified_code/dart/build modified_code/python/__pycache__"
+
+[tasks.test]
+description = "Run all tests"
+depends = ["embed:test", "quota"]
