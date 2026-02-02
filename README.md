@@ -1,6 +1,6 @@
-# DartCodeAI – Level 4 ML/Analytics Practical Assignment
+# DartCodeAI ML/Op — Production ML Operations Toolkit
 
-Welcome to the DartCodeAI practical assessment. This assignment evaluates your ability to:
+Welcome to DartCodeAI ML/Op. This toolkit demonstrates production-ready capabilities for:
 - extend an inference CLI with embeddings,
 - reason about quotas/tokens,
 - compute safe analytics deltas,

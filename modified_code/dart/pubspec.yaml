@@ -1,5 +1,5 @@
 name: dartcodeai
-description: ML/Analytics CLI tool for DartCodeAI assignment - embedding comparison and quota enforcement
+description: DartCodeAI ML/Op - Production ML operations toolkit for embeddings, quota enforcement, and analytics
 version: 1.0.0
 
 environment:
