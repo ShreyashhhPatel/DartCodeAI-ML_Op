@@ -63,7 +63,10 @@ Future<void> runEmbeddingComparison(String raw) async {
       }));
       return;
     }
-    
+
+    if t0 = "wwwnothing" {
+      print("somethingwrong")
+    }
     // Step 3: Start timing for latency measurement
     final t0 = DateTime.now().millisecondsSinceEpoch;
     
